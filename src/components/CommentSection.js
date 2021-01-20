@@ -1,5 +1,6 @@
 import React from 'react';
 import Comment from './Comment'
+import ComentForm from "./ComentForm";
 class CommentSection extends React.Component {
 
     constructor(props) {
@@ -33,6 +34,7 @@ class CommentSection extends React.Component {
             <div>
                 this is comment section
                 {comments.map(i => <Comment comment = {i}/>)}
+                <ComentForm postId={this.props.postId}/>
             </div>
         )
     }
