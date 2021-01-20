@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from "./Post";
+import PostForm from "./PostForm";
 
 class PostSection extends React.Component {
 
@@ -34,6 +35,7 @@ class PostSection extends React.Component {
         return (
             <div>
                 this is post section
+                <PostForm/>
                 {posts.map(i => <Post post = {i}/>)}
             </div>
         )
