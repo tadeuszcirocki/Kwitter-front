@@ -1,5 +1,33 @@
 import React from 'react';
 import CommentSection from "./CommentSection";
+import PropTypes from 'prop-types'
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/styles';
+import ButtonBase from '@material-ui/core/ButtonBase';
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        margin: 50,
+    },
+    paper: {
+        padding: 10,
+        margin: 'auto',
+        maxWidth: 900,
+    },
+    image: {
+        width: 128,
+        height: 128,
+    },
+    img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    },
+});
 
 class Post extends React.Component {
 
@@ -32,18 +60,68 @@ class Post extends React.Component {
 
 
     render() {
+        const {classes} = this.props;
         const post = this.props.post;
         const author = this.state.author
         return (
-            <div>
-                this is post
-                TITLE: {post.title}
-                AUTHOR: {author.username}
+        <div className={classes.root}>
+            <Paper elevation={5} className={classes.paper}>
+                <Grid container spacing={2}>
+                    <Grid item>
+
+                    </Grid>
+                    <Grid item xs={12} sm container>
+                        <Grid item xs container direction="column" spacing={2}>
+                            <Grid item xs>
+
+                                <Typography variant="body1" gutterBottom>
+                                    {post.title}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    {post.content}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" gutterBottom>
+                                    likes: {post.likeQuantity}
+                                </Typography>
+                                <Typography variant="body2" gutterBottom>
+                                    {post.created}
+                                </Typography>
+                                <p></p>
+
+                                <Typography variant ="caption">
+                                    ~ {author.username}
+                                </Typography>
+
+                            </Grid>
+
+                        </Grid>
+                        <Grid item>
+                            <Typography onClick={() => {
+                                alert("click")
+                            }} variant="body2" style={{cursor: 'pointer'}}>
+                                <h5>remove</h5>
+                            </Typography>
+                            <Typography onClick={() => {
+                                alert('click')
+                            }} variant="body2" style={{cursor: 'pointer'}}>
+                                <h5>edit</h5>
+                            </Typography>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+                <hr/>
                 <CommentSection postId={post.id}/>
-            </div>
+            </Paper>
+        </div>
         )
     }
 }
 
-export default Post;
+
+Post.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Post);
 

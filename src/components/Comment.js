@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Typography from '@material-ui/core/Typography';
+import Button from "@material-ui/core/Button";
 class Blog extends React.Component {
 
     constructor(props) {
@@ -27,19 +28,27 @@ class Blog extends React.Component {
     }
 
 
-
-
-
     render() {
         const comment = this.props.comment
         const author = this.state.author
         return (
-            <div>
-                this is comment
+
+        <div style={{paddingTop: 12}}>
+            <Typography variant ="body2">
                 {comment.content}
-                AUTHOR: {author.username}
-                delete edit
-            </div>
+            </Typography>
+            <Typography variant ="caption">
+                ~ {author.username}
+                    <div>
+                        <Button onClick={() => alert("click")} color={"secondary"} size={"small"}>remove</Button>
+                        <Button color={"primary"} size={"small"}>edit</Button>
+                    </div>
+
+
+
+
+            </Typography>
+        </div>
         )
     }
 }
