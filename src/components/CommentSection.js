@@ -32,7 +32,6 @@ class CommentSection extends React.Component {
         const comments = this.state.comments
         return (
             <div>
-                this is comment section
                 {comments.map(i => <Comment comment = {i}/>)}
                 <ComentForm postId={this.props.postId}/>
             </div>

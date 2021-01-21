@@ -27,6 +27,14 @@ class Blog extends React.Component {
             )
     }
 
+    removeComment(id){
+        const requestOptions = {
+            method: 'DELETE'
+        };
+        fetch("https://localhost:44386/api/comments/"+id, requestOptions);
+        window.location.reload(false);
+    }
+
 
     render() {
         const comment = this.props.comment
@@ -40,7 +48,7 @@ class Blog extends React.Component {
             <Typography variant ="caption">
                 ~ {author.username}
                     <div>
-                        <Button onClick={() => alert("click")} color={"secondary"} size={"small"}>remove</Button>
+                        <Button onClick={() => this.removeComment(this.props.comment.id)} color={"secondary"} size={"small"}>remove</Button>
                         <Button color={"primary"} size={"small"}>edit</Button>
                     </div>
 

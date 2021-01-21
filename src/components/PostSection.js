@@ -34,7 +34,6 @@ class PostSection extends React.Component {
         const posts = this.state.posts
         return (
             <div>
-                this is post section
                 <PostForm/>
                 {posts.map(i => <Post post = {i}/>)}
             </div>

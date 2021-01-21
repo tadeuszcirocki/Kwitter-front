@@ -34,7 +34,8 @@ class Post extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            author : {"username" : "default"}
+            author : {"username" : "default"},
+            likes : this.props.post.likeQuantity
         };
     }
 
@@ -53,6 +54,19 @@ class Post extends React.Component {
                     });
                 }
             )
+    }
+
+    AddLike = (prevState) => {
+        this.setState({likes: prevState.likes + 1}, () => {
+            fetch("https://localhost:44386/api/kweets/"+this.props.post.id+"/like")
+        })};
+
+    removePost(id){
+        const requestOptions = {
+            method: 'DELETE'
+        };
+        fetch("https://localhost:44386/api/kweets/"+id, requestOptions);
+        window.location.reload(false);
     }
 
 
@@ -81,7 +95,7 @@ class Post extends React.Component {
                                     {post.content}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" gutterBottom>
-                                    likes: {post.likeQuantity}
+                                    likes: {this.state.likes}
                                 </Typography>
                                 <Typography variant="body2" gutterBottom>
                                     {post.created}
@@ -97,7 +111,7 @@ class Post extends React.Component {
                         </Grid>
                         <Grid item>
                             <Typography onClick={() => {
-                                alert("click")
+                                this.removePost(post.id)
                             }} variant="body2" style={{cursor: 'pointer'}}>
                                 <h5>remove</h5>
                             </Typography>
@@ -105,6 +119,11 @@ class Post extends React.Component {
                                 alert('click')
                             }} variant="body2" style={{cursor: 'pointer'}}>
                                 <h5>edit</h5>
+                            </Typography>
+                            <Typography onClick={() => {
+                                this.AddLike(this.state)
+                            }} variant="body1" style={{cursor: 'pointer'}}>
+                                <h4>like</h4>
                             </Typography>
                         </Grid>
 
