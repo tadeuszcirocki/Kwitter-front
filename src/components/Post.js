@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import EditForm from "./EditForm";
 
 const styles = theme => ({
     root: {
@@ -124,6 +125,7 @@ class Post extends React.Component {
                                     <h5>edit</h5>
                                 </Typography>
                                 : null}
+
 
                             <Typography onClick={() => {
                                 this.AddLike(this.state)

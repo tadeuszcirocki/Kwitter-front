@@ -9,7 +9,7 @@ class Blog extends React.Component {
         if(useridd==-1 || useridd==undefined)
         return (
             <div>
-                zaloguj się
+                log in please
             </div>
         )
         else{
@@ -17,7 +17,6 @@ class Blog extends React.Component {
                 <div>
                     <Navbar/>
                     <PostSection/>
-                    {"user id:"+useridd}
                 </div>
             )
         }
