@@ -75,7 +75,7 @@ class PostForm extends React.Component{
         if(this.state.content == 'content')
             alert('please enter the content')
         else{
-            this.postPost(this.state.content,this.state.title, this.state.selectedAuthor);
+            this.postPost(this.state.content,this.state.title, localStorage.getItem('userid'));
         }
     }
 
@@ -124,27 +124,11 @@ class PostForm extends React.Component{
 
 
 
-               <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-mutiple-name-label">author</InputLabel>
-                    <Select
-                        labelId="demo-mutiple-name-label"
-                        id="demo-mutiple-name"
-                        value={this.state.selectedAuthor}
-                        onChange={this.handleMulti}
-                        input={<Input />}
-                        MenuProps={MenuProps}
-                    >
-                        {this.state.authors.map((author) => (
-                            <MenuItem key={author.id} value={author.id}>
-                                {author.username}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
+
 
 
                 <Button style={{float:'right', marginTop: 20}} variant = 'contained' color='primary' onClick={this.mySubmitHandler}>Add post</Button>
-
+                <br/>
             </div>
 
         );

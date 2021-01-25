@@ -16,6 +16,7 @@ class Reg extends Component {
         this.Permissions = this.Permissions.bind(this);
         this.Bio = this.Bio.bind(this);
         this.register = this.register.bind(this);
+        localStorage.setItem('userid',-1);
     }
     Email(event) {
         this.setState({ Email: event.target.value })

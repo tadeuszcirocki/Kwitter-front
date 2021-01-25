@@ -13,6 +13,7 @@ class Login extends Component {
         this.Password = this.Password.bind(this);
         this.Username = this.Username.bind(this);
         this.login = this.login.bind(this);
+        localStorage.setItem('userid',-1);
     }
     Username(event) {
         this.setState({ Username: event.target.value })

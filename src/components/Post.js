@@ -110,16 +110,21 @@ class Post extends React.Component {
 
                         </Grid>
                         <Grid item>
-                            <Typography onClick={() => {
-                                this.removePost(post.id)
-                            }} variant="body2" style={{cursor: 'pointer'}}>
-                                <h5>remove</h5>
-                            </Typography>
-                            <Typography onClick={() => {
-                                alert('click')
-                            }} variant="body2" style={{cursor: 'pointer'}}>
-                                <h5>edit</h5>
-                            </Typography>
+                            {localStorage.getItem('userid') == this.state.author.id ?
+                                <Typography onClick={() => {
+                                    this.removePost(post.id)
+                                }} variant="body2" style={{cursor: 'pointer'}}>
+                                    <h5>remove</h5>
+                                </Typography>
+                                : null}
+                            {localStorage.getItem('userid') == this.state.author.id ?
+                                <Typography onClick={() => {
+                                    alert('click')
+                                }} variant="body2" style={{cursor: 'pointer'}}>
+                                    <h5>edit</h5>
+                                </Typography>
+                                : null}
+
                             <Typography onClick={() => {
                                 this.AddLike(this.state)
                             }} variant="body1" style={{cursor: 'pointer'}}>

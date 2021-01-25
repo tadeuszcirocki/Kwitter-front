@@ -88,11 +88,8 @@ class ComentForm extends React.Component{
         if(this.state.content == 'comment content'){
             alert("please enter comment")
         }
-        else if(this.state.selectedAuthor == undefined){
-            alert("no anonymous comments")
-        }
         else
-            this.postComment(this.state.content, this.state.selectedAuthor, this.state.postId);
+            this.postComment(this.state.content, localStorage.getItem('userid'), this.state.postId);
     }
 
     componentDidMount() {
@@ -116,23 +113,7 @@ class ComentForm extends React.Component{
                     placeholder="content"
                 />
 
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-mutiple-name-label">author</InputLabel>
-                    <Select
-                        labelId="demo-mutiple-name-label"
-                        id="demo-mutiple-name"
-                        value={this.state.selectedAuthor}
-                        onChange={this.handleMulti}
-                        input={<Input />}
-                        MenuProps={MenuProps}
-                    >
-                        {this.state.authors.map((author) => (
-                            <MenuItem key={author.id} value={author.id}>
-                                {author.username}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
+
                 <Button style={{float:'right', marginTop: 20}} variant = 'outlined' color='default' onClick={this.mySubmitHandler}>Add comment</Button>
 
             </div>

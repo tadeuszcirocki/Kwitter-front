@@ -48,8 +48,11 @@ class Blog extends React.Component {
             <Typography variant ="caption">
                 ~ {author.username}
                     <div>
+                        {localStorage.getItem('userid') == this.state.author.id ?
                         <Button onClick={() => this.removeComment(this.props.comment.id)} color={"secondary"} size={"small"}>remove</Button>
-                        <Button color={"primary"} size={"small"}>edit</Button>
+                            : null}
+                        {localStorage.getItem('userid') == this.state.author.id ?
+                        <Button color={"primary"} size={"small"}>edit</Button> : null}
                     </div>
 
 
